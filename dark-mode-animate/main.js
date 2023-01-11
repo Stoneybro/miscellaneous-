@@ -1,4 +1,8 @@
+const start=document.getElementById('start')
+const hideModal=document.querySelector('.modal')
+const wrapper=document.querySelector('.wrapper')
 const timediv=document.querySelector('.time')
+const game=document.querySelector('#game')
 const grid=document.querySelector('.grid')
 const bomb=document.querySelector('.bomb')
 let sec=0
@@ -89,10 +93,10 @@ function clicked(square) {
 
 function checkSquare(square) {
   const id=square.getAttribute('id')
-  console.log(id);
+
   const isLeftSide=(id%10===0)
     const isRightSide=(id%10===9)
-    console.log(isLeftSide,isRightSide);
+
   setTimeout(()=>{
     if (id>0 && !isLeftSide) {
       const newId=squares[parseInt(id)-1].id
@@ -137,6 +141,7 @@ function checkSquare(square) {
   },10)
 }
 function Gameover(square) {
+ 
   isGameOver=true
   squares.forEach(square => {
     if (square.classList.contains('bomb')) {
@@ -144,6 +149,15 @@ function Gameover(square) {
       square.style.backgroundColor='white'
     }
   });
+  setTimeout(()=>{
+    wrapper.classList.add('blur')
+    hideModal.classList.remove('hide-modal')
+    game.innerHTML='YOU LOST!!! 💣'
+    start.innerHTML='Restart game'
+  },750)
+
+  
+  clearInterval(settimer)
 }
 
 function win(params) {
@@ -156,17 +170,66 @@ function win(params) {
   }
  
   if (matches===bombAmount) {
-    console.log('you win');
+    setTimeout(()=>{
+      wrapper.classList.add('blur')
+      hideModal.classList.remove('hide-modal')
+      game.innerHTML='YOU Win!!! 🎉'
+      start.innerHTML='Restart game'
+    },750)
   }
 }
 
-  //const timing=setInterval(()=>{
-  //  time()
-  //},1000)
-//  clearInterval(timing)
-timing()
-function time(params) {
-  timediv.textContent=sec
-  sec++
+let hour=0
+let minutes=5
+let seconds=59
+let milliseconds=1000
+
+
+const settimer=()=>setInterval(()=>timer(),10)
+
+
+
+
+document.getElementById('seconds').innerHTML='00'
+document.getElementById('minutes').innerHTML=`0${minutes}`
+document.getElementById('milliseconds').innerHTML='000'
+
+
+function timer(params) {
+  document.getElementById('seconds').innerHTML=seconds<10?`0${seconds}`:seconds
+ milliseconds= milliseconds-10
+ if (milliseconds<100) {
+  document.getElementById('milliseconds').innerHTML=`0${milliseconds}`
+ }else{
+  document.getElementById('milliseconds').innerHTML=milliseconds
+ }
+  if (milliseconds===0) {
+    milliseconds=1000
+    seconds--
+     document.getElementById('seconds').innerHTML=seconds<10?`0${seconds}`:seconds
   
+  }
+  if (seconds===0) {
+    seconds=59
+    minutes--
+    document.getElementById('minutes').innerHTML=minutes
+  }
+  if (minutes===-1) {
+    document.getElementById('minutes').innerHTML=`00`
+    clearInterval(settimer)
+
+  }
 }
+
+start.addEventListener('click',()=>{
+  wrapper.classList.remove('blur')
+  hideModal.classList.add('hide-modal')
+  settimer()
+  
+
+
+})
+
+
+
+

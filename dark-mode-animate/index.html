@@ -7,9 +7,17 @@
     <link rel="stylesheet" href="style.css">
     <title>Vite App</title>
   </head>
-  <body>
-    <div class="time">00:00:00</div>
-   <div class="grid"></div>
+  <body >
+    <div class="wrapper blur">
+    <div class="time"><span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>:<span id="milliseconds">000</span></div>
+      
+    <div class="grid"></div>
+    </div>
+  </div>
+  <div class="modal">
+    <div id="game">Start game 🏁</div>
+
+    <button id="start">Start</button>
    <script type="module" src="./main.js"></script>
   </body>
 </html>

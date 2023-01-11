@@ -1,5 +1,9 @@
 body{
   box-sizing: border-box;
+  overflow: hidden;
+ 
+}
+.wrapper{
   margin: 0;
   padding: 0;
   display: flex;
@@ -7,6 +11,10 @@ body{
   align-items: center;
   justify-content: center;
   height: 100vh;
+
+}
+.blur{
+  filter: blur(5px);
 }
 .grid{
   display: flex;
@@ -39,4 +47,30 @@ div>.checked{
 .time{
   font-size: 3rem;
   margin-bottom: 1rem;
+}
+.modal{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 20%;
+  background-color: rgba(0, 0, 0, 0.537);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 30px 0;
+  font-size: 2rem;
+}
+.modal>button{
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 1rem;
+}
+.hide-modal{
+  display: none;
 }
