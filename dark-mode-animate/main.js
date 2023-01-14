@@ -5,6 +5,7 @@ const timediv=document.querySelector('.time')
 const game=document.querySelector('#game')
 const grid=document.querySelector('.grid')
 const bomb=document.querySelector('.bomb')
+
 let sec=0
 let squares=[]
 const width=10
@@ -140,6 +141,16 @@ function checkSquare(square) {
     }
   },10)
 }
+let settimer
+start.addEventListener('click',()=>{
+  wrapper.classList.remove('blur')
+  hideModal.classList.add('hide-modal')
+  settimer=setInterval(()=>timer(),10)
+  restart()
+
+
+})
+
 function Gameover(square) {
  
   isGameOver=true
@@ -153,7 +164,7 @@ function Gameover(square) {
     wrapper.classList.add('blur')
     hideModal.classList.remove('hide-modal')
     game.innerHTML='YOU LOST!!! 💣'
-    start.innerHTML='Restart game'
+    start.innerHTML='Restart'
   },750)
 
   
@@ -184,8 +195,9 @@ let minutes=5
 let seconds=59
 let milliseconds=1000
 
+ 
 
-const settimer=()=>setInterval(()=>timer(),10)
+
 
 
 
@@ -212,23 +224,24 @@ function timer(params) {
   if (seconds===0) {
     seconds=59
     minutes--
-    document.getElementById('minutes').innerHTML=minutes
+    document.getElementById('minutes').innerHTML=minutes<10?`0${minutes}`:minutes
   }
   if (minutes===-1) {
     document.getElementById('minutes').innerHTML=`00`
-    clearInterval(settimer)
+    
 
   }
 }
 
-start.addEventListener('click',()=>{
-  wrapper.classList.remove('blur')
-  hideModal.classList.add('hide-modal')
-  settimer()
+function restart(params) {
   
+   hour=0
+   minutes=5
+   seconds=59
+   milliseconds=1000
+}
 
 
-})
 
 
 

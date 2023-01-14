@@ -1,23 +1,30 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
+const nav=document.querySelector('nav')
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// nav.getElementsByTagName('a').forEach(link => {
+//   link.addEventListener('click',()=>{
+//     console.log(99);
+//   })
+// });
+for (const link of nav.getElementsByTagName('a')) {
+ link.onmousemove=e=>{
+  const rect=link.getBoundingClientRect()
+  const img=link.querySelector('img')
 
-setupCounter(document.querySelector('#counter'))
+    img.style.left=`${e.clientX-rect.left}px`
+    img.style.top=`${e.clientY-rect.top}px`
+
+ }
+}
+// window.onmousemove=(e)=>{
+//   const percent=e.clientY/window.innerHeight
+//   const y=percent*-1*nav.offsetHeight
+//   console.log(e.clientY);
+//   nav.animate({
+//     transform:`translateY(${y}px)`
+//   },{
+//     fill:"forwards",
+//     duration:'auto'
+//   }
+//   )
+// }
+console.log(window.innerHeight,nav.offsetHeight);
