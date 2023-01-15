@@ -1,0 +1,21 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+  height: 100vh;
+}
+.trailer{
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+
+  border-radius: 50%;
+  z-index: 1000;
+  opacity:0 ;
+  pointer-events: none;
+  transition: opacity 400ms;
+}
+body:hover> .trailer{
+  opacity: 1;
+}
