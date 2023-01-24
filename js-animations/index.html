@@ -3,11 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
   <body>
-    <div id="app"></div>
+
+      <div class="big-pic">
+        <img src="./public/bears.png" alt="" class="anchor">
+        <div class="eyes">
+          <img src="./brown.png" alt="" class="brown eye b-two">
+          <img src="./brown.png" alt="" class="brown eye b-one">
+        <img src="./polar.png" alt="" class="polar eye po-one">
+        <img src="./polar.png" alt="" class="polar eye po-two">
+        <img src="./public/panda.png" alt="" class="panda eye pa-one">
+        <img src="./public/panda.png" alt="" class="panda eye pa-two">
+        </div>
+      </div>
+
+  <form>
+    <span>
+    <label for="name">name</label>
+    <input type="text" id="name" maxlength="20">
+  </span>
+    <span>
+    <label for="">password</label>
+    <input type="text" id="password">
+  </span>
+    <span>
+    <label for="confirm">confirm password</label>
+    <input type="text" id="confirm">
+  </span>
+  </form>
+
+
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>
